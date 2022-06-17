@@ -47,11 +47,12 @@ controller = Controller(ss, [-1, -1.1, -1.2, -1.3])
 dt = 0.01
 t = 0:dt:20
 x = [[0., 0., 0., 0.]] #Initial conditions of pendulum
+u = [0.]
 
 # Iterating through all the time steps
 for i in t[2:end]
-    u = get_u(controller, last(x), 0.0)
-    push!(x, rk4(xdot, last(x), dt, params, u))
+    push!(u, get_u(controller, last(x), 0.0))
+    push!(x, rk4(xdot, last(x), dt, params, last(u)))
     if i == 1.0
         last(x)[4] = -2.0 # Instantaneous change in angular velocity, simulating flicking the ball
     end
@@ -60,13 +61,18 @@ end
 # Making GIF
 
 anim = @animate for i in 1:length(t)
-    plot([x[i][1], x[i][1] + params.l * sin(x[i][3])], 
+    p1 = plot([x[i][1], x[i][1] + params.l * sin(x[i][3])], 
         [0, params.l * cos(x[i][3])], 
         leg = false, 
         xlims = (-10, 1), 
         ylims = (-1, 2.5), 
         aspect_ratio = 1)
-    scatter!([x[i][1]], [0], m = (:rect, 12))
-    scatter!([x[i][1] + params.l * sin(x[i][3])], [params.l * cos(x[i][3])], m = (:circle, 8))
+    scatter!(p1, [x[i][1]], [0], m = (:rect, 12))
+    scatter!(p1, [x[i][1] + params.l * sin(x[i][3])], [params.l * cos(x[i][3])], m = (:circle, 8))
+    p2 = plot(t, [j[1] for j in x], label = "Position", legend_position = :bottomright)
+    scatter!(p2, [t[i]], [x[i][1]], label = "")
+    p3 = plot(t, [j[3] for j in x], label = "Angle")
+    scatter!(p3, [t[i]], [x[i][3]], label = "")
+    plot(p1,p2, p3, layout = (3,1), size = (1200, 800))
 end every 10;
 gif(anim, "gifs/Inverted_pendulum.gif");
