@@ -1,5 +1,5 @@
-include("src/Modeling.jl")
-include("src/Controls.jl")
+using Modeling
+using Controls
 using Plots
 ENV["GKSwstype"]="nul" # Call this if using WSL
 
