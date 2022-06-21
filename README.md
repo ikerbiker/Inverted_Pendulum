@@ -16,4 +16,4 @@ The `Modeling.jl` and `Controls.jl` packages are for providing various modeling 
 
 Here is an example output GIF
 
-![model_gif](https://raw.githubusercontent.com/ikerbiker/Inverted_Pendulum/main/gifs/Inverted_pendulum.gif)
+![model_gif](https://raw.githubusercontent.com/smith-isaac/Inverted_Pendulum/main/gifs/Inverted_pendulum.gif)
