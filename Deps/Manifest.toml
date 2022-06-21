@@ -84,7 +84,7 @@ version = "0.5.7"
 
 [[deps.Controls]]
 deps = ["LinearAlgebra", "Modeling", "Polynomials"]
-git-tree-sha1 = "a168ea283ae45c3dce8e5dc7ebe86a9c0b6bc45f"
+git-tree-sha1 = "46c9bf66330cca73d46099725abb9eee7f4633c9"
 repo-rev = "main"
 repo-url = "https://github.com/smith-isaac/Controls.jl.git"
 uuid = "9b4ff7e0-84a1-49af-8a5a-d29d7ab73489"
@@ -430,7 +430,7 @@ uuid = "a63ad114-7e13-5084-954f-fe012c677804"
 
 [[deps.Modeling]]
 deps = ["LinearAlgebra"]
-git-tree-sha1 = "9631fb03e608582e00d21578fff87c4c9a8a879b"
+git-tree-sha1 = "8ebed3c762c98a6991b611bdb771f177c233d824"
 repo-rev = "main"
 repo-url = "https://github.com/smith-isaac/Modeling.jl.git"
 uuid = "8c260c69-540f-4492-b9b0-29f6bf1aa2df"

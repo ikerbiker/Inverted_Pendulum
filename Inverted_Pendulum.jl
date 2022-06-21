@@ -61,18 +61,13 @@ end
 # Making GIF
 
 anim = @animate for i in 1:length(t)
-    p1 = plot([x[i][1], x[i][1] + params.l * sin(x[i][3])], 
+    plot([x[i][1], x[i][1] + params.l * sin(x[i][3])], 
         [0, params.l * cos(x[i][3])], 
         leg = false, 
         xlims = (-10, 1), 
         ylims = (-1, 2.5), 
         aspect_ratio = 1)
-    scatter!(p1, [x[i][1]], [0], m = (:rect, 12))
-    scatter!(p1, [x[i][1] + params.l * sin(x[i][3])], [params.l * cos(x[i][3])], m = (:circle, 8))
-    p2 = plot(t, [j[1] for j in x], label = "Position", legend_position = :bottomright)
-    scatter!(p2, [t[i]], [x[i][1]], label = "")
-    p3 = plot(t, [j[3] for j in x], label = "Angle")
-    scatter!(p3, [t[i]], [x[i][3]], label = "")
-    plot(p1,p2, p3, layout = (3,1), size = (1200, 800))
+    scatter!([x[i][1]], [0], m = (:rect, 12))
+    scatter!([x[i][1] + params.l * sin(x[i][3])], [params.l * cos(x[i][3])], m = (:circle, 8))
 end every 10;
 gif(anim, "gifs/Inverted_pendulum.gif");
